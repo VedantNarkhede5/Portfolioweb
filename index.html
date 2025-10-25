@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vedant Narkhede | Portfolio</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+
+  <style>
+    :root {
+      --yellow: #ffbd39;
+      --dark: #222;
+      --light: #fff;
+      --gray: #555;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      margin: 0;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background: var(--light);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      position: fixed;
+      top: 0; left: 0; width: 100%;
+      z-index: 999;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 3rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--dark);
+      margin: 0 1rem;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: var(--yellow);
+    }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      background: var(--light);
+      text-align: center;
+      padding: 0 1rem;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+    }
+
+    .hero h2 {
+      color: var(--gray);
+      font-size: 1.3rem;
+      margin-top: .5rem;
+    }
+
+    #typing {
+      color: var(--yellow);
+      font-weight: 600;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--dark);
+      padding: .8rem 1.5rem;
+      margin: .5rem;
+      border-radius: 30px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: all .3s ease;
+    }
+    .btn:hover { transform: translateY(-3px); }
+
+    section {
+      padding: 5rem 2rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    h2.section-title {
+      text-align: center;
+      color: var(--dark);
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    h2.section-title::after {
+      content: "";
+      width: 80px;
+      height: 4px;
+      background: var(--yellow);
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .about p {
+      margin-bottom: 1rem;
+    }
+
+    .tools {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .tool {
+      background: var(--light);
+      border: 1px solid #eee;
+      border-radius: 10px;
+      text-align: center;
+      padding: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      transition: .3s;
+    }
+    .tool:hover { transform: translateY(-5px); }
+
+    .education .card,
+    .project-card,
+    .contact-card {
+      background: var(--light);
+      border-radius: 15px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin-bottom: 1.5rem;
+      transition: .3s;
+    }
+
+
+	.edu-list{max-width:900px;margin:0 auto;display:grid;gap:16px}
+    .edu-item{background:var(--card);padding:18px;border-radius:10px;box-shadow:var(--shadow)}
+    .edu-meta{color:var(--muted);font-weight:600}
+
+
+	
+    .project-card:hover {
+      transform: scale(1.03);
+    }
+
+    .project-card h3 {
+      color: var(--yellow);
+    }
+
+    .counter {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    .counter div {
+      flex: 1;
+      margin: 1rem;
+    }
+
+    .counter .num {
+      font-size: 2.5rem;
+      color: var(--yellow);
+      font-weight: 700;
+    }
+
+    footer {
+      background: var(--light);
+      text-align: center;
+      padding: 1rem;
+      border-top: 1px solid #eee;
+      font-size: .9rem;
+    }
+
+    @media(max-width:768px){
+      nav{flex-direction: column;}
+      .hero h1{font-size:2rem;}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo"><strong>Vedant Narkhede</strong></div>
+    <div>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero" id="home" data-aos="fade-up">
+  <h1>Hi, I'm <span style="color:var(--yellow)">Vedant Narkhede</span></h1>
+  <h2><span id="typing"></span></h2>
+  <p>
+    <a href="https://www.linkedin.com/in/narkhedevedant212" class="btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    <a href="https://github.com/VedantNarkhede5" class="btn"><i class="fab fa-github"></i> GitHub</a>
+  </p>
+</section>
+
+<section class="about" id="about" data-aos="fade-up">
+  <h2 class="section-title">About Me</h2>
+  <p>
+    I’m an enthusiastic <strong>MCA student</strong> specializing in <strong>Artificial Intelligence and Machine Learning</strong> at DY Patil International University.  
+    With a strong foundation in <strong>computer science, data analysis, and application development</strong>, I aim to bridge software engineering and intelligent systems to create impactful, efficient solutions.  
+  </p>
+  <p>
+    I enjoy solving real-world problems through technology—whether developing Android apps, performing data-driven analysis, or designing intelligent algorithms.  
+    I value teamwork, continuous learning, and have a keen eye for clean, maintainable code.  
+  </p>
+
+  <h3>Tools & Technologies</h3>
+  <div class="tools">
+    <div class="tool"><i class="fab fa-python"></i><br>Python</div>
+    <div class="tool"><i class="fab fa-java"></i><br>Java</div>
+    <div class="tool"><i class="fas fa-code"></i><br>C / C++</div>
+    <div class="tool"><i class="fas fa-database"></i><br>SQL</div>
+    <div class="tool"><i class="fas fa-mobile"></i><br>Android</div>
+    <div class="tool"><i class="fas fa-brain"></i><br>Data Science</div>
+    <div class="tool"><i class="fab fa-php"></i><br>PHP</div>
+    <div class="tool"><i class="fas fa-chart-line"></i><br>Power BI</div>
+  </div>
+
+  <p style="text-align:center;margin-top:2rem;">
+    <a href="Resume_VedantNarkhede.pdf" class="btn"><i class="fas fa-download"></i> Download Resume</a>
+  </p>
+</section>
+
+<section id="skills" data-aos="fade-up">
+  <h2 class="section-title">Skills</h2>
+  <div class="tools">
+    <div class="tool">Python</div>
+    <div class="tool">Java / Advanced Java</div>
+    <div class="tool">C & C++</div>
+    <div class="tool">PHP</div>
+    <div class="tool">Android Studio</div>
+    <div class="tool">Power BI</div>
+    <div class="tool">Data Science</div>
+    <div class="tool">SQL</div>
+  </div>
+</section>
+
+  <section id="education">
+    <div class="section-title">
+      <h2 data-aos="fade-up">Education</h2>
+      <p data-aos="fade-up" data-aos-delay="80">Academic background & timelines.</p>
+    </div>
+
+    <div class="edu-list" data-aos="fade-up" data-aos-delay="140">
+      <div class="edu-item">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div>
+            <h3>MCA — Artificial Intelligence & Machine Learning</h3>
+            <div class="edu-meta">DY Patil International University · Pursuing (2025 – 2027)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="edu-item">
+        <h3>BBA (Computer Application)</h3>
+        <div class="edu-meta">Indira Group of Institutes · Completed 2025 · CGPA: 9.20</div>
+      </div>
+
+      <div class="edu-item">
+        <h3>Higher Secondary (HSC)</h3>
+        <div class="edu-meta">Pratibha Junior College, Pune · Completed 2022 · Percentage: 78%</div>
+      </div>
+	  <div class="edu-item">
+        <h3>Secondary School Certificate (SSC)</h3>
+        <div class="edu-meta">Priyadarshini english medium school, Pune · Completed 2022 · Percentage: 78%</div>
+      </div>
+    </div>
+  </section>
+
+<section id="projects" data-aos="fade-up">
+  <h2 class="section-title">Projects</h2>
+
+  <div class="project-card">
+    <h3>CSV Data Cleaning & Visualization Dashboard</h3>
+    <p>An interactive dashboard built using Python & Streamlit that allows users to upload CSV files, clean data, and generate insightful visualizations.</p>
+    <p><strong>Tools:</strong> Python, Pandas, Matplotlib, Streamlit</p>
+    <a href="https://github.com/VedantNarkhede5/CSV-Cleaner-Visualizer" class="btn">View on GitHub</a>
+  </div>
+
+  <div class="project-card">
+    <h3>Donation Management System</h3>
+    <p>A Java-based desktop application to manage donors, donations, and reports efficiently with SQL database connectivity.</p>
+    <p><strong>Tools:</strong> Java, JDBC, MySQL</p>
+    <a href="https://github.com/VedantNarkhede5/Donation-Management-System" class="btn">View on GitHub</a>
+  </div>
+
+  <div class="project-card">
+    <h3>Flipkart Sales Analysis Dashboard</h3>
+    <p>Power BI dashboard for visualizing and analyzing Flipkart’s sales trends, customer demographics, and regional performance.</p>
+    <p><strong>Tools:</strong> Power BI, Excel</p>
+    <a href="https://github.com/VedantNarkhede5/Flipkart-Sales-Analysis" class="btn">View on GitHub</a>
+  </div>
+
+  <div class="project-card">
+    <h3>AI-Enhanced Driver Wellness Monitoring System</h3>
+    <p>AI + IoT system that monitors driver drowsiness, stress, and wellness levels in real-time to improve road safety.</p>
+    <p><strong>Tools:</strong> Python, OpenCV, TensorFlow, IoT Sensors</p>
+    <a href="https://github.com/VedantNarkhede5/AI-Driver-Wellness" class="btn">View on GitHub</a>
+  </div>
+
+  <div class="counter">
+    <div><div class="num">30+</div>LeetCode Questions</div>
+    <div><div class="num">4</div>Projects</div>
+    <div><div class="num">10+</div>Technologies</div>
+    <div><div class="num">∞</div>Learning Everyday</div>
+  </div>
+</section>
+
+<section id="contact" data-aos="fade-up">
+  <h2 class="section-title">Contact Me</h2>
+  <div class="contact-card">
+    <p><i class="fas fa-map-marker-alt"></i> Pune, Maharashtra</p>
+    <p><i class="fas fa-phone"></i> <a href="tel:+917507059249">+91 7507059249</a></p>
+    <p><i class="fas fa-envelope"></i> <a href="mailto:narkhedevedant212@gmail.com">narkhedevedant212@gmail.com</a></p>
+    <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/narkhedevedant212">linkedin.com/in/narkhedevedant212</a></p>
+    <p><i class="fab fa-github"></i> <a href="https://github.com/VedantNarkhede5">github.com/VedantNarkhede5</a></p>
+    <p style="text-align:center;margin-top:1rem;">
+      <a href="mailto:narkhedevedant212@gmail.com" class="btn">Hire Me</a>
+    </p>
+  </div>
+</section>
+
+<footer>
+  &copy; <script>document.write(new Date().getFullYear())</script> Vedant Narkhede | Built with ❤️ & Yellow Energy
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init({duration:1000, once:true});
+
+// Typing animation
+const textArray = ["MCA Student", "Developer", "Data Science Enthusiast"];
+let typingElement = document.getElementById("typing");
+let i = 0, j = 0;
+function type(){
+  if(j < textArray[i].length){
+    typingElement.textContent += textArray[i][j];
+    j++; setTimeout(type, 100);
+  } else {
+    setTimeout(() => {
+      typingElement.textContent = "";
+      i = (i + 1) % textArray.length;
+      j = 0;
+      type();
+    }, 1500);
+  }
+}
+type();
+</script>
+
+</body>
+</html>
