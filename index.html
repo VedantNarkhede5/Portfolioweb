@@ -10,38 +10,29 @@
 
   <style>
     :root {
-      --yellow: #f5c518;
-      --yellow-dim: rgba(245,197,24,0.12);
-      --dark: #0d0d0d;
-      --dark2: #161616;
-      --card: #1a1a1a;
-      --border: rgba(255,255,255,0.07);
-      --text: #e8e8e8;
-      --muted: #888;
-      --shadow: 0 8px 32px rgba(0,0,0,0.4);
+      --yellow: #e6a800;
+      --yellow-bright: #f5c518;
+      --yellow-dim: rgba(230,168,0,0.10);
+      --yellow-border: rgba(230,168,0,0.30);
+      --bg: #ffffff;
+      --bg2: #f8f7f3;
+      --card: #ffffff;
+      --border: #e8e4dc;
+      --text: #1a1a1a;
+      --muted: #777;
+      --shadow: 0 4px 24px rgba(0,0,0,0.08);
+      --shadow-hover: 0 12px 40px rgba(0,0,0,0.14);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
 
     body {
       font-family: 'DM Sans', sans-serif;
-      background: var(--dark);
+      background: var(--bg);
       color: var(--text);
       line-height: 1.7;
       overflow-x: hidden;
-    }
-
-    /* ── NOISE TEXTURE ── */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.4;
     }
 
     /* ── NAV ── */
@@ -49,7 +40,7 @@
       position: fixed;
       top: 0; left: 0; width: 100%;
       z-index: 999;
-      background: rgba(13,13,13,0.85);
+      background: rgba(255,255,255,0.92);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
     }
@@ -66,7 +57,7 @@
     .logo {
       font-family: 'Syne', sans-serif;
       font-weight: 800;
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       color: var(--yellow);
       letter-spacing: -0.5px;
     }
@@ -78,9 +69,7 @@
       font-size: 0.88rem;
       font-weight: 500;
       transition: color .2s;
-      letter-spacing: 0.3px;
     }
-
     .nav-links a:hover { color: var(--yellow); }
 
     /* ── HERO ── */
@@ -92,21 +81,33 @@
       position: relative;
       overflow: hidden;
       padding: 7rem 2rem 4rem;
+      background: var(--bg);
+    }
+
+    /* Subtle dot-grid background */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, #e0d8c8 1px, transparent 1px);
+      background-size: 28px 28px;
+      opacity: 0.55;
+      pointer-events: none;
     }
 
     .hero-glow {
       position: absolute;
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(245,197,24,0.15) 0%, transparent 70%);
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(245,197,24,0.18) 0%, transparent 70%);
       top: 50%; left: 50%;
       transform: translate(-50%, -50%);
       pointer-events: none;
-      animation: pulse 4s ease-in-out infinite;
+      animation: pulse 5s ease-in-out infinite;
     }
 
     @keyframes pulse {
-      0%, 100% { opacity: 0.6; transform: translate(-50%,-50%) scale(1); }
-      50% { opacity: 1; transform: translate(-50%,-50%) scale(1.08); }
+      0%,100% { opacity: 0.7; transform: translate(-50%,-50%) scale(1); }
+      50%      { opacity: 1;   transform: translate(-50%,-50%) scale(1.1); }
     }
 
     .hero-inner {
@@ -118,14 +119,14 @@
     .hero-badge {
       display: inline-block;
       background: var(--yellow-dim);
-      border: 1px solid rgba(245,197,24,0.3);
+      border: 1px solid var(--yellow-border);
       color: var(--yellow);
       font-size: 0.78rem;
-      font-weight: 500;
-      padding: .35rem 1rem;
+      font-weight: 600;
+      padding: .35rem 1.1rem;
       border-radius: 20px;
-      margin-bottom: 1.5rem;
-      letter-spacing: 0.5px;
+      margin-bottom: 1.6rem;
+      letter-spacing: 0.8px;
       text-transform: uppercase;
     }
 
@@ -135,7 +136,7 @@
       font-weight: 800;
       line-height: 1.05;
       letter-spacing: -2px;
-      color: #fff;
+      color: var(--text);
     }
 
     .hero h1 span { color: var(--yellow); }
@@ -145,6 +146,7 @@
       font-size: 1.1rem;
       color: var(--muted);
       font-weight: 300;
+      min-height: 1.7rem;
     }
 
     #typing { color: var(--yellow); font-weight: 500; }
@@ -169,25 +171,24 @@
       transition: all .25s ease;
       cursor: pointer;
       border: none;
+      font-family: 'DM Sans', sans-serif;
     }
 
     .btn-primary {
       background: var(--yellow);
-      color: var(--dark);
+      color: #fff;
     }
-
     .btn-primary:hover {
-      background: #ffd340;
+      background: var(--yellow-bright);
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(245,197,24,0.35);
+      box-shadow: 0 8px 24px rgba(230,168,0,0.30);
     }
 
     .btn-outline {
       background: transparent;
       color: var(--text);
-      border: 1px solid var(--border);
+      border: 1.5px solid var(--border);
     }
-
     .btn-outline:hover {
       border-color: var(--yellow);
       color: var(--yellow);
@@ -196,23 +197,21 @@
 
     .scroll-indicator {
       position: absolute;
-      bottom: 2rem;
-      left: 50%;
+      bottom: 2rem; left: 50%;
       transform: translateX(-50%);
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: .4rem;
       color: var(--muted);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       letter-spacing: 1px;
       text-transform: uppercase;
-      animation: bounce 2s ease-in-out infinite;
+      animation: bob 2s ease-in-out infinite;
     }
-
-    @keyframes bounce {
+    @keyframes bob {
       0%,100% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(6px); }
+      50%      { transform: translateX(-50%) translateY(6px); }
     }
 
     /* ── SECTIONS ── */
@@ -221,23 +220,22 @@
       margin: auto;
       padding: 6rem 2rem;
       position: relative;
-      z-index: 1;
     }
 
     .section-label {
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       color: var(--yellow);
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
-      margin-bottom: .6rem;
+      margin-bottom: .5rem;
     }
 
     h2.section-title {
       font-family: 'Syne', sans-serif;
       font-size: clamp(1.8rem, 4vw, 2.8rem);
       font-weight: 800;
-      color: #fff;
+      color: var(--text);
       letter-spacing: -1px;
       margin-bottom: 3rem;
     }
@@ -247,20 +245,24 @@
       font-style: normal;
     }
 
+    /* Stripe divider between sections */
+    .section-stripe {
+      background: var(--bg2);
+    }
+
     /* ── ABOUT ── */
     .about-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 3.5rem;
       align-items: start;
     }
 
     .about-text p {
-      color: var(--muted);
+      color: #555;
       margin-bottom: 1.2rem;
       font-size: 0.97rem;
     }
-
     .about-text p strong { color: var(--text); }
 
     .about-stats {
@@ -270,15 +272,17 @@
     }
 
     .stat-box {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
+      background: var(--bg2);
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
       padding: 1.5rem;
       text-align: center;
-      transition: border-color .3s;
+      transition: border-color .3s, box-shadow .3s;
     }
-
-    .stat-box:hover { border-color: var(--yellow); }
+    .stat-box:hover {
+      border-color: var(--yellow);
+      box-shadow: var(--shadow);
+    }
 
     .stat-num {
       font-family: 'Syne', sans-serif;
@@ -286,7 +290,6 @@
       font-weight: 800;
       color: var(--yellow);
     }
-
     .stat-label {
       font-size: 0.82rem;
       color: var(--muted);
@@ -296,141 +299,151 @@
     /* ── SKILLS ── */
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
       gap: 1rem;
     }
 
     .skill-chip {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.2rem 1rem;
+      background: var(--bg2);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 1.3rem 1rem;
       text-align: center;
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       color: var(--text);
       transition: all .25s;
       cursor: default;
     }
-
     .skill-chip i {
       display: block;
       font-size: 1.4rem;
       color: var(--yellow);
       margin-bottom: .5rem;
     }
-
     .skill-chip:hover {
       border-color: var(--yellow);
       background: var(--yellow-dim);
       transform: translateY(-4px);
+      box-shadow: var(--shadow);
     }
 
     /* ── EDUCATION ── */
     .edu-timeline {
       position: relative;
-      padding-left: 2rem;
+      padding-left: 2.2rem;
     }
-
     .edu-timeline::before {
       content: '';
       position: absolute;
-      left: 0; top: 6px; bottom: 6px;
+      left: 0; top: 8px; bottom: 8px;
       width: 2px;
-      background: linear-gradient(to bottom, var(--yellow), transparent);
+      background: linear-gradient(to bottom, var(--yellow), #f5c51830);
     }
 
     .edu-item {
       position: relative;
       background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
       padding: 1.5rem 1.8rem;
-      margin-bottom: 1.5rem;
-      transition: border-color .3s;
+      margin-bottom: 1.4rem;
+      transition: border-color .3s, box-shadow .3s;
     }
-
     .edu-item::before {
       content: '';
       position: absolute;
-      left: -2.35rem; top: 1.6rem;
-      width: 10px; height: 10px;
+      left: -2.55rem; top: 1.65rem;
+      width: 11px; height: 11px;
       border-radius: 50%;
       background: var(--yellow);
-      border: 2px solid var(--dark);
+      border: 3px solid var(--bg);
+      box-shadow: 0 0 0 2px var(--yellow-border);
     }
-
-    .edu-item:hover { border-color: var(--yellow); }
+    .edu-item:hover {
+      border-color: var(--yellow);
+      box-shadow: var(--shadow);
+    }
 
     .edu-item h3 {
       font-family: 'Syne', sans-serif;
       font-size: 1rem;
       font-weight: 700;
-      color: #fff;
+      color: var(--text);
       margin-bottom: .3rem;
     }
-
-    .edu-meta {
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
+    .edu-meta { font-size: 0.85rem; color: var(--muted); }
 
     .edu-badge {
       display: inline-block;
       background: var(--yellow-dim);
       color: var(--yellow);
-      font-size: 0.75rem;
-      padding: .2rem .7rem;
+      font-size: 0.74rem;
+      padding: .22rem .75rem;
       border-radius: 20px;
       margin-top: .5rem;
-      font-weight: 500;
+      font-weight: 600;
+      border: 1px solid var(--yellow-border);
     }
 
     /* ── PROJECTS ── */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
       gap: 1.5rem;
     }
 
     .project-card {
       background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 18px;
       padding: 2rem;
       transition: all .3s;
       display: flex;
       flex-direction: column;
+      position: relative;
+      overflow: hidden;
     }
-
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--yellow), var(--yellow-bright));
+      opacity: 0;
+      transition: opacity .3s;
+    }
     .project-card:hover {
-      border-color: var(--yellow);
+      border-color: var(--yellow-border);
       transform: translateY(-6px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      box-shadow: var(--shadow-hover);
     }
+    .project-card:hover::before { opacity: 1; }
 
     .project-icon {
-      width: 44px; height: 44px;
+      width: 46px; height: 46px;
       background: var(--yellow-dim);
-      border-radius: 10px;
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--yellow);
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       margin-bottom: 1.2rem;
+      border: 1px solid var(--yellow-border);
     }
 
     .project-card h3 {
       font-family: 'Syne', sans-serif;
       font-size: 1rem;
       font-weight: 700;
-      color: #fff;
-      margin-bottom: .7rem;
+      color: var(--text);
+      margin-bottom: .6rem;
+      line-height: 1.4;
     }
 
     .project-card p {
-      font-size: 0.88rem;
-      color: var(--muted);
+      font-size: 0.87rem;
+      color: #666;
       flex: 1;
       margin-bottom: 1.2rem;
     }
@@ -441,14 +454,20 @@
       gap: .4rem;
       margin-bottom: 1.2rem;
     }
-
     .tag {
-      background: rgba(255,255,255,0.05);
+      background: var(--bg2);
       border: 1px solid var(--border);
       color: var(--muted);
-      font-size: 0.75rem;
-      padding: .2rem .7rem;
+      font-size: 0.74rem;
+      padding: .22rem .75rem;
       border-radius: 20px;
+    }
+
+    .project-links {
+      display: flex;
+      gap: .8rem;
+      flex-wrap: wrap;
+      margin-top: auto;
     }
 
     .project-link {
@@ -456,38 +475,43 @@
       align-items: center;
       gap: .4rem;
       color: var(--yellow);
-      font-size: 0.85rem;
-      font-weight: 500;
+      font-size: 0.84rem;
+      font-weight: 600;
       text-decoration: none;
-      margin-top: auto;
-      transition: gap .2s;
+      transition: gap .2s, color .2s;
     }
+    .project-link:hover { gap: .65rem; }
 
-    .project-link:hover { gap: .7rem; }
+    .project-link.demo {
+      color: #fff;
+      background: var(--yellow);
+      padding: .35rem .9rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+    }
+    .project-link.demo:hover {
+      background: var(--yellow-bright);
+      gap: .55rem;
+    }
 
     /* ── COUNTERS ── */
     .counters {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 1rem;
-      margin-top: 3rem;
+      margin-top: 2.5rem;
       padding: 2.5rem;
-      background: var(--card);
-      border: 1px solid var(--border);
+      background: var(--bg2);
+      border: 1.5px solid var(--border);
       border-radius: 20px;
     }
-
-    .counter-item {
-      text-align: center;
-    }
-
+    .counter-item { text-align: center; }
     .counter-num {
       font-family: 'Syne', sans-serif;
       font-size: 2.4rem;
       font-weight: 800;
       color: var(--yellow);
     }
-
     .counter-label {
       font-size: 0.82rem;
       color: var(--muted);
@@ -501,38 +525,30 @@
       gap: 2rem;
     }
 
-    .contact-info {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
+    .contact-info { display: flex; flex-direction: column; gap: 1rem; }
 
     .contact-row {
       display: flex;
       align-items: center;
       gap: 1rem;
-      background: var(--card);
-      border: 1px solid var(--border);
+      background: var(--bg2);
+      border: 1.5px solid var(--border);
       border-radius: 12px;
-      padding: 1.1rem 1.4rem;
-      transition: border-color .3s;
+      padding: 1rem 1.4rem;
+      transition: border-color .3s, box-shadow .3s;
       text-decoration: none;
       color: var(--text);
     }
-
-    .contact-row:hover { border-color: var(--yellow); }
-
-    .contact-row i {
-      color: var(--yellow);
-      width: 20px;
-      text-align: center;
+    .contact-row:hover {
+      border-color: var(--yellow);
+      box-shadow: var(--shadow);
     }
-
+    .contact-row i { color: var(--yellow); width: 20px; text-align: center; }
     .contact-row span { font-size: 0.9rem; }
 
     .contact-cta {
-      background: linear-gradient(135deg, rgba(245,197,24,0.15), rgba(245,197,24,0.05));
-      border: 1px solid rgba(245,197,24,0.3);
+      background: linear-gradient(135deg, var(--yellow-dim), rgba(245,197,24,0.04));
+      border: 1.5px solid var(--yellow-border);
       border-radius: 20px;
       padding: 2.5rem;
       display: flex;
@@ -540,15 +556,13 @@
       justify-content: center;
       text-align: center;
     }
-
     .contact-cta h3 {
       font-family: 'Syne', sans-serif;
       font-size: 1.6rem;
       font-weight: 800;
-      color: #fff;
+      color: var(--text);
       margin-bottom: .8rem;
     }
-
     .contact-cta p {
       color: var(--muted);
       font-size: 0.9rem;
@@ -562,17 +576,15 @@
       padding: 2rem;
       font-size: 0.82rem;
       color: var(--muted);
-      position: relative;
-      z-index: 1;
+      background: var(--bg2);
     }
-
-    footer span { color: var(--yellow); }
+    footer span { color: var(--yellow); font-weight: 600; }
 
     /* ── ANIMATIONS ── */
     .fade-up {
       opacity: 0;
-      transform: translateY(30px);
-      transition: opacity .7s ease, transform .7s ease;
+      transform: translateY(28px);
+      transition: opacity .65s ease, transform .65s ease;
     }
     .fade-up.visible {
       opacity: 1;
@@ -582,14 +594,12 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       .nav-links { display: none; }
-      .about-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
       .contact-grid { grid-template-columns: 1fr; }
-      .counters { grid-template-columns: repeat(2, 1fr); }
+      .counters { grid-template-columns: repeat(2,1fr); }
     }
-
     @media (max-width: 480px) {
       .projects-grid { grid-template-columns: 1fr; }
-      .counters { grid-template-columns: repeat(2, 1fr); }
       .about-stats { grid-template-columns: 1fr 1fr; }
     }
   </style>
@@ -621,8 +631,8 @@
     <div class="hero-btns">
       <a href="mailto:narkhedevedant212@gmail.com" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Hire Me</a>
       <a href="Resume_VedantNarkhede.pdf" class="btn btn-outline"><i class="fas fa-download"></i> Resume</a>
-      <a href="https://github.com/VedantNarkhede5" class="btn btn-outline"><i class="fab fa-github"></i> GitHub</a>
-      <a href="https://www.linkedin.com/in/narkhedevedant212" class="btn btn-outline"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="https://github.com/VedantNarkhede5" target="_blank" class="btn btn-outline"><i class="fab fa-github"></i> GitHub</a>
+      <a href="https://www.linkedin.com/in/narkhedevedant212" target="_blank" class="btn btn-outline"><i class="fab fa-linkedin"></i> LinkedIn</a>
     </div>
   </div>
   <div class="scroll-indicator">
@@ -632,7 +642,7 @@
 </section>
 
 <!-- ABOUT -->
-<section id="about">
+<section id="about" class="section-stripe">
   <div class="fade-up">
     <div class="section-label">Who I Am</div>
     <h2 class="section-title">About <em>Me</em></h2>
@@ -648,7 +658,9 @@
       <p>
         I enjoy solving real-world problems through technology — whether developing Android apps, performing data-driven analysis, or designing intelligent algorithms. I value teamwork, continuous learning, and have a keen eye for clean, maintainable code.
       </p>
-      <a href="Resume_VedantNarkhede.pdf" class="btn btn-primary" style="margin-top:.5rem;"><i class="fas fa-download"></i> Download Resume</a>
+      <a href="Resume_VedantNarkhede.pdf" class="btn btn-primary" style="margin-top:.5rem;">
+        <i class="fas fa-download"></i> Download Resume
+      </a>
     </div>
     <div class="about-stats">
       <div class="stat-box">
@@ -656,7 +668,7 @@
         <div class="stat-label">LeetCode Problems</div>
       </div>
       <div class="stat-box">
-        <div class="stat-num">5</div>
+        <div class="stat-num">6</div>
         <div class="stat-label">Projects Built</div>
       </div>
       <div class="stat-box">
@@ -688,11 +700,13 @@
     <div class="skill-chip"><i class="fas fa-chart-bar"></i>Power BI</div>
     <div class="skill-chip"><i class="fas fa-robot"></i>Machine Learning</div>
     <div class="skill-chip"><i class="fab fa-html5"></i>HTML / CSS</div>
+    <div class="skill-chip"><i class="fas fa-network-wired"></i>ANN / Deep Learning</div>
+    <div class="skill-chip"><i class="fas fa-server"></i>Django</div>
   </div>
 </section>
 
 <!-- EDUCATION -->
-<section id="education">
+<section id="education" class="section-stripe">
   <div class="fade-up">
     <div class="section-label">My Journey</div>
     <h2 class="section-title">Education &amp; <em>Background</em></h2>
@@ -729,82 +743,143 @@
   </div>
   <div class="projects-grid fade-up">
 
+    <!-- Skin Care AI ANN -->
+    <div class="project-card">
+      <div class="project-icon"><i class="fas fa-spa"></i></div>
+      <h3>Skin Care AI (ANN + Django)</h3>
+      <p>
+        Advanced skin condition analysis using Artificial Neural Networks. Detects acne, dryness, oiliness, and pigmentation from user input and images, then delivers personalized skincare routines and product recommendations. Built with Django for a full-stack web experience.
+      </p>
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">ANN</span>
+        <span class="tag">Django</span>
+        <span class="tag">Machine Learning</span>
+        <span class="tag">MongoDB</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/VedantNarkhede5/SkinCare-Ai_ANN" target="_blank" class="project-link">
+          <i class="fab fa-github"></i> GitHub <i class="fas fa-arrow-right"></i>
+        </a>
+        <a href="https://vedantnarkhede.pythonanywhere.com/" target="_blank" class="project-link demo">
+          <i class="fas fa-external-link-alt"></i> Live Demo
+        </a>
+      </div>
+    </div>
+
+    <!-- E-commerce Analysis -->
+    <div class="project-card">
+      <div class="project-icon"><i class="fas fa-shopping-bag"></i></div>
+      <h3>E-commerce AI Analytics</h3>
+      <p>
+        AI-powered e-commerce analytics project for analyzing customer behavior, sales patterns, and product performance. Provides data-driven insights using machine learning to help businesses optimize their online store strategies.
+      </p>
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">Machine Learning</span>
+        <span class="tag">Data Analysis</span>
+        <span class="tag">Pandas</span>
+        <span class="tag">Visualization</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/VedantNarkhede5/Ecommerce-AI-Analytics-Project" target="_blank" class="project-link">
+          <i class="fab fa-github"></i> GitHub <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- CSV Dashboard -->
     <div class="project-card">
       <div class="project-icon"><i class="fas fa-chart-line"></i></div>
       <h3>CSV Data Cleaning &amp; Visualization Dashboard</h3>
-      <p>An interactive dashboard that allows users to upload CSV files, clean data, and generate insightful visualizations with automatic profiling.</p>
+      <p>
+        Interactive dashboard that allows users to upload CSV files, clean data, and generate insightful visualizations with automatic profiling and summary statistics.
+      </p>
       <div class="tags">
         <span class="tag">Python</span>
         <span class="tag">Pandas</span>
         <span class="tag">Matplotlib</span>
         <span class="tag">Streamlit</span>
       </div>
-      <a href="https://github.com/VedantNarkhede5/CSV-Cleaner-Visualizer" class="project-link" target="_blank">View on GitHub <i class="fas fa-arrow-right"></i></a>
+      <div class="project-links">
+        <a href="https://github.com/VedantNarkhede5/CSV-Cleaner-Visualizer" target="_blank" class="project-link">
+          <i class="fab fa-github"></i> GitHub <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
     </div>
 
+    <!-- Skin Care AI (old Flask) -->
     <div class="project-card">
-      <div class="project-icon"><i class="fas fa-spa"></i></div>
-      <h3>Skin Care AI</h3>
-      <p>Intelligent web application that analyzes skin conditions like acne, dryness, and pigmentation using ML — providing personalized skincare recommendations and routines.</p>
+      <div class="project-icon"><i class="fas fa-leaf"></i></div>
+      <h3>Skin Care AI (Flask + ML)</h3>
+      <p>
+        Earlier version of the skin care analysis system built with Flask and MongoDB. Analyzes skin issues and provides personalized recommendations, reducing dependency on trial-and-error skincare methods.
+      </p>
       <div class="tags">
         <span class="tag">Python</span>
-        <span class="tag">Machine Learning</span>
         <span class="tag">Flask</span>
         <span class="tag">MongoDB</span>
+        <span class="tag">HTML / CSS</span>
       </div>
-      <a href="https://github.com/VedantNarkhede5/skin_care_ai" class="project-link" target="_blank">View on GitHub <i class="fas fa-arrow-right"></i></a>
+      <div class="project-links">
+        <a href="https://github.com/VedantNarkhede5/skin_care_ai" target="_blank" class="project-link">
+          <i class="fab fa-github"></i> GitHub <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
     </div>
 
+    <!-- Donation Management -->
     <div class="project-card">
       <div class="project-icon"><i class="fas fa-hand-holding-heart"></i></div>
       <h3>Donation Management System</h3>
-      <p>Java-based desktop application to manage donors, donations, and generate reports efficiently with SQL database connectivity via JDBC.</p>
+      <p>
+        Java-based desktop application to manage donors, donations, and generate reports efficiently with SQL database connectivity via JDBC.
+      </p>
       <div class="tags">
         <span class="tag">Java</span>
         <span class="tag">JDBC</span>
         <span class="tag">MySQL</span>
       </div>
-      <a href="https://github.com/VedantNarkhede5/Donation-Management-System" class="project-link" target="_blank">View on GitHub <i class="fas fa-arrow-right"></i></a>
-    </div>
-
-    <div class="project-card">
-      <div class="project-icon"><i class="fas fa-shopping-cart"></i></div>
-      <h3>Flipkart Sales Analysis Dashboard</h3>
-      <p>Power BI dashboard for visualizing Flipkart's sales trends, customer demographics, and regional performance metrics with drill-down views.</p>
-      <div class="tags">
-        <span class="tag">Power BI</span>
-        <span class="tag">Excel</span>
-        <span class="tag">Data Analysis</span>
+      <div class="project-links">
+        <a href="https://github.com/VedantNarkhede5/Donation-Management-System" target="_blank" class="project-link">
+          <i class="fab fa-github"></i> GitHub <i class="fas fa-arrow-right"></i>
+        </a>
       </div>
-      <a href="https://github.com/VedantNarkhede5/Flipkart-Sales-Analysis" class="project-link" target="_blank">View on GitHub <i class="fas fa-arrow-right"></i></a>
     </div>
 
+    <!-- AI Driver Wellness -->
     <div class="project-card">
       <div class="project-icon"><i class="fas fa-car"></i></div>
       <h3>AI-Enhanced Driver Wellness Monitoring System</h3>
-      <p>AI + IoT system that monitors driver drowsiness, stress, and wellness levels in real-time using computer vision and sensors to improve road safety.</p>
+      <p>
+        AI + IoT system that monitors driver drowsiness, stress, and wellness levels in real-time using computer vision and sensors to significantly improve road safety.
+      </p>
       <div class="tags">
         <span class="tag">Python</span>
         <span class="tag">OpenCV</span>
         <span class="tag">TensorFlow</span>
         <span class="tag">IoT</span>
       </div>
-      <a href="https://github.com/VedantNarkhede5/AI-Driver-Wellness" class="project-link" target="_blank">View on GitHub <i class="fas fa-arrow-right"></i></a>
+      <div class="project-links">
+        <a href="https://github.com/VedantNarkhede5/AI-Driver-Wellness" target="_blank" class="project-link">
+          <i class="fab fa-github"></i> GitHub <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
     </div>
 
   </div>
 
-  <div class="counters fade-up" style="margin-top:2.5rem;">
+  <div class="counters fade-up">
     <div class="counter-item">
       <div class="counter-num">30+</div>
       <div class="counter-label">LeetCode Questions</div>
     </div>
     <div class="counter-item">
-      <div class="counter-num">5</div>
+      <div class="counter-num">6</div>
       <div class="counter-label">Projects Built</div>
     </div>
     <div class="counter-item">
-      <div class="counter-num">10+</div>
+      <div class="counter-num">12+</div>
       <div class="counter-label">Technologies</div>
     </div>
     <div class="counter-item">
@@ -815,7 +890,7 @@
 </section>
 
 <!-- CONTACT -->
-<section id="contact">
+<section id="contact" class="section-stripe">
   <div class="fade-up">
     <div class="section-label">Let's Connect</div>
     <h2 class="section-title">Get In <em>Touch</em></h2>
@@ -859,7 +934,7 @@
 
 <script>
   // Typing animation
-  const phrases = ["MCA Student", "AI & ML Enthusiast", "Python Developer", "Data Science Explorer"];
+  const phrases = ["MCA Student", "AI & ML Enthusiast", "Python Developer", "Django Developer", "Data Science Explorer"];
   const el = document.getElementById("typing");
   let pi = 0, ci = 0, deleting = false;
 
@@ -868,14 +943,14 @@
     el.textContent = deleting ? phrase.slice(0, ci--) : phrase.slice(0, ci++);
     if (!deleting && ci > phrase.length) { deleting = true; setTimeout(tick, 1400); return; }
     if (deleting && ci < 0) { deleting = false; pi = (pi + 1) % phrases.length; ci = 0; setTimeout(tick, 400); return; }
-    setTimeout(tick, deleting ? 50 : 90);
+    setTimeout(tick, deleting ? 48 : 88);
   }
   tick();
 
-  // Scroll animations
+  // Scroll fade-up animations
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.08 });
 
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
