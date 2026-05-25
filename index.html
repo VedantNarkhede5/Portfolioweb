@@ -5,602 +5,207 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Vedant Narkhede | Portfolio</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 
   <style>
     :root {
-      --yellow: #f5c518;
-      --yellow-dim: rgba(245,197,24,0.12);
-      --dark: #0d0d0d;
-      --dark2: #161616;
-      --card: #1a1a1a;
-      --border: rgba(255,255,255,0.07);
-      --text: #e8e8e8;
-      --muted: #888;
-      --shadow: 0 8px 32px rgba(0,0,0,0.4);
+      --yellow: #ffbd39;
+      --dark: #222;
+      --light: #fff;
+      --gray: #555;
     }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--dark);
-      color: var(--text);
-      line-height: 1.7;
-      overflow-x: hidden;
+      font-family: 'Poppins', sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      margin: 0;
+      line-height: 1.6;
+      scroll-behavior: smooth;
     }
 
-    /* ── NOISE TEXTURE ── */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.4;
-    }
-
-    /* ── NAV ── */
     header {
+      background: var(--light);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       position: fixed;
       top: 0; left: 0; width: 100%;
       z-index: 999;
-      background: rgba(13,13,13,0.85);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
     }
 
     nav {
-      max-width: 1200px;
-      margin: auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.1rem 2rem;
+      padding: 1rem 3rem;
     }
 
-    .logo {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 1.15rem;
-      color: var(--yellow);
-      letter-spacing: -0.5px;
-    }
-
-    .nav-links a {
+    nav a {
       text-decoration: none;
-      color: var(--muted);
-      margin-left: 1.8rem;
-      font-size: 0.88rem;
+      color: var(--dark);
+      margin: 0 1rem;
       font-weight: 500;
-      transition: color .2s;
-      letter-spacing: 0.3px;
     }
 
-    .nav-links a:hover { color: var(--yellow); }
+    nav a:hover {
+      color: var(--yellow);
+    }
 
-    /* ── HERO ── */
     .hero {
-      min-height: 100vh;
+      height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
-      overflow: hidden;
-      padding: 7rem 2rem 4rem;
-    }
-
-    .hero-glow {
-      position: absolute;
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(245,197,24,0.15) 0%, transparent 70%);
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-      animation: pulse 4s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 0.6; transform: translate(-50%,-50%) scale(1); }
-      50% { opacity: 1; transform: translate(-50%,-50%) scale(1.08); }
-    }
-
-    .hero-inner {
+      flex-direction: column;
+      background: var(--light);
       text-align: center;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-badge {
-      display: inline-block;
-      background: var(--yellow-dim);
-      border: 1px solid rgba(245,197,24,0.3);
-      color: var(--yellow);
-      font-size: 0.78rem;
-      font-weight: 500;
-      padding: .35rem 1rem;
-      border-radius: 20px;
-      margin-bottom: 1.5rem;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
+      padding: 0 1rem;
     }
 
     .hero h1 {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(2.8rem, 7vw, 5.5rem);
-      font-weight: 800;
-      line-height: 1.05;
-      letter-spacing: -2px;
-      color: #fff;
+      font-size: 3rem;
+      font-weight: 700;
     }
 
-    .hero h1 span { color: var(--yellow); }
-
-    .hero-sub {
-      margin-top: 1rem;
-      font-size: 1.1rem;
-      color: var(--muted);
-      font-weight: 300;
+    .hero h2 {
+      color: var(--gray);
+      font-size: 1.3rem;
+      margin-top: .5rem;
     }
 
-    #typing { color: var(--yellow); font-weight: 500; }
-
-    .hero-btns {
-      margin-top: 2.5rem;
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
+    #typing {
+      color: var(--yellow);
+      font-weight: 600;
     }
 
     .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: .5rem;
-      padding: .75rem 1.6rem;
-      border-radius: 50px;
-      font-weight: 500;
-      font-size: 0.9rem;
-      text-decoration: none;
-      transition: all .25s ease;
-      cursor: pointer;
-      border: none;
-    }
-
-    .btn-primary {
+      display: inline-block;
       background: var(--yellow);
       color: var(--dark);
+      padding: .8rem 1.5rem;
+      margin: .5rem;
+      border-radius: 30px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: all .3s ease;
     }
+    .btn:hover { transform: translateY(-3px); }
 
-    .btn-primary:hover {
-      background: #ffd340;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(245,197,24,0.35);
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border);
-    }
-
-    .btn-outline:hover {
-      border-color: var(--yellow);
-      color: var(--yellow);
-      transform: translateY(-2px);
-    }
-
-    .scroll-indicator {
-      position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: .4rem;
-      color: var(--muted);
-      font-size: 0.75rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      animation: bounce 2s ease-in-out infinite;
-    }
-
-    @keyframes bounce {
-      0%,100% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(6px); }
-    }
-
-    /* ── SECTIONS ── */
     section {
+      padding: 5rem 2rem;
       max-width: 1100px;
       margin: auto;
-      padding: 6rem 2rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    .section-label {
-      font-size: 0.78rem;
-      color: var(--yellow);
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: .6rem;
     }
 
     h2.section-title {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 800;
-      color: #fff;
-      letter-spacing: -1px;
-      margin-bottom: 3rem;
-    }
-
-    h2.section-title em {
-      color: var(--yellow);
-      font-style: normal;
-    }
-
-    /* ── ABOUT ── */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: start;
-    }
-
-    .about-text p {
-      color: var(--muted);
-      margin-bottom: 1.2rem;
-      font-size: 0.97rem;
-    }
-
-    .about-text p strong { color: var(--text); }
-
-    .about-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-
-    .stat-box {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.5rem;
       text-align: center;
-      transition: border-color .3s;
-    }
-
-    .stat-box:hover { border-color: var(--yellow); }
-
-    .stat-num {
-      font-family: 'Syne', sans-serif;
+      color: var(--dark);
       font-size: 2.2rem;
-      font-weight: 800;
-      color: var(--yellow);
-    }
-
-    .stat-label {
-      font-size: 0.82rem;
-      color: var(--muted);
-      margin-top: .2rem;
-    }
-
-    /* ── SKILLS ── */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: 1rem;
-    }
-
-    .skill-chip {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.2rem 1rem;
-      text-align: center;
-      font-size: 0.88rem;
-      color: var(--text);
-      transition: all .25s;
-      cursor: default;
-    }
-
-    .skill-chip i {
-      display: block;
-      font-size: 1.4rem;
-      color: var(--yellow);
-      margin-bottom: .5rem;
-    }
-
-    .skill-chip:hover {
-      border-color: var(--yellow);
-      background: var(--yellow-dim);
-      transform: translateY(-4px);
-    }
-
-    /* ── EDUCATION ── */
-    .edu-timeline {
+      margin-bottom: 1rem;
       position: relative;
-      padding-left: 2rem;
     }
 
-    .edu-timeline::before {
-      content: '';
-      position: absolute;
-      left: 0; top: 6px; bottom: 6px;
-      width: 2px;
-      background: linear-gradient(to bottom, var(--yellow), transparent);
-    }
-
-    .edu-item {
-      position: relative;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.5rem 1.8rem;
-      margin-bottom: 1.5rem;
-      transition: border-color .3s;
-    }
-
-    .edu-item::before {
-      content: '';
-      position: absolute;
-      left: -2.35rem; top: 1.6rem;
-      width: 10px; height: 10px;
-      border-radius: 50%;
+    h2.section-title::after {
+      content: "";
+      width: 80px;
+      height: 4px;
       background: var(--yellow);
-      border: 2px solid var(--dark);
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
     }
 
-    .edu-item:hover { border-color: var(--yellow); }
-
-    .edu-item h3 {
-      font-family: 'Syne', sans-serif;
-      font-size: 1rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: .3rem;
+    .about p {
+      margin-bottom: 1rem;
     }
 
-    .edu-meta {
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-
-    .edu-badge {
-      display: inline-block;
-      background: var(--yellow-dim);
-      color: var(--yellow);
-      font-size: 0.75rem;
-      padding: .2rem .7rem;
-      border-radius: 20px;
-      margin-top: .5rem;
-      font-weight: 500;
-    }
-
-    /* ── PROJECTS ── */
-    .projects-grid {
+    .tools {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
     }
 
-    .project-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 2rem;
-      transition: all .3s;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .project-card:hover {
-      border-color: var(--yellow);
-      transform: translateY(-6px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-    }
-
-    .project-icon {
-      width: 44px; height: 44px;
-      background: var(--yellow-dim);
+    .tool {
+      background: var(--light);
+      border: 1px solid #eee;
       border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--yellow);
-      font-size: 1.1rem;
-      margin-bottom: 1.2rem;
+      text-align: center;
+      padding: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      transition: .3s;
+    }
+    .tool:hover { transform: translateY(-5px); }
+
+    .education .card,
+    .project-card,
+    .contact-card {
+      background: var(--light);
+      border-radius: 15px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin-bottom: 1.5rem;
+      transition: .3s;
+    }
+
+
+	.edu-list{max-width:900px;margin:0 auto;display:grid;gap:16px}
+    .edu-item{background:var(--card);padding:18px;border-radius:10px;box-shadow:var(--shadow)}
+    .edu-meta{color:var(--muted);font-weight:600}
+
+
+	
+    .project-card:hover {
+      transform: scale(1.03);
     }
 
     .project-card h3 {
-      font-family: 'Syne', sans-serif;
-      font-size: 1rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: .7rem;
+      color: var(--yellow);
     }
 
-    .project-card p {
-      font-size: 0.88rem;
-      color: var(--muted);
-      flex: 1;
-      margin-bottom: 1.2rem;
-    }
-
-    .tags {
+    .counter {
       display: flex;
+      justify-content: space-around;
       flex-wrap: wrap;
-      gap: .4rem;
-      margin-bottom: 1.2rem;
-    }
-
-    .tag {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 0.75rem;
-      padding: .2rem .7rem;
-      border-radius: 20px;
-    }
-
-    .project-link {
-      display: inline-flex;
-      align-items: center;
-      gap: .4rem;
-      color: var(--yellow);
-      font-size: 0.85rem;
-      font-weight: 500;
-      text-decoration: none;
-      margin-top: auto;
-      transition: gap .2s;
-    }
-
-    .project-link:hover { gap: .7rem; }
-
-    /* ── COUNTERS ── */
-    .counters {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
+      text-align: center;
       margin-top: 3rem;
-      padding: 2.5rem;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
     }
 
-    .counter-item {
-      text-align: center;
+    .counter div {
+      flex: 1;
+      margin: 1rem;
     }
 
-    .counter-num {
-      font-family: 'Syne', sans-serif;
-      font-size: 2.4rem;
-      font-weight: 800;
+    .counter .num {
+      font-size: 2.5rem;
       color: var(--yellow);
+      font-weight: 700;
     }
 
-    .counter-label {
-      font-size: 0.82rem;
-      color: var(--muted);
-      margin-top: .2rem;
-    }
-
-    /* ── CONTACT ── */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-    }
-
-    .contact-info {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .contact-row {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.1rem 1.4rem;
-      transition: border-color .3s;
-      text-decoration: none;
-      color: var(--text);
-    }
-
-    .contact-row:hover { border-color: var(--yellow); }
-
-    .contact-row i {
-      color: var(--yellow);
-      width: 20px;
-      text-align: center;
-    }
-
-    .contact-row span { font-size: 0.9rem; }
-
-    .contact-cta {
-      background: linear-gradient(135deg, rgba(245,197,24,0.15), rgba(245,197,24,0.05));
-      border: 1px solid rgba(245,197,24,0.3);
-      border-radius: 20px;
-      padding: 2.5rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      text-align: center;
-    }
-
-    .contact-cta h3 {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.6rem;
-      font-weight: 800;
-      color: #fff;
-      margin-bottom: .8rem;
-    }
-
-    .contact-cta p {
-      color: var(--muted);
-      font-size: 0.9rem;
-      margin-bottom: 1.8rem;
-    }
-
-    /* ── FOOTER ── */
     footer {
-      border-top: 1px solid var(--border);
+      background: var(--light);
       text-align: center;
-      padding: 2rem;
-      font-size: 0.82rem;
-      color: var(--muted);
-      position: relative;
-      z-index: 1;
+      padding: 1rem;
+      border-top: 1px solid #eee;
+      font-size: .9rem;
     }
 
-    footer span { color: var(--yellow); }
-
-    /* ── ANIMATIONS ── */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity .7s ease, transform .7s ease;
-    }
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .about-grid { grid-template-columns: 1fr; }
-      .contact-grid { grid-template-columns: 1fr; }
-      .counters { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media (max-width: 480px) {
-      .projects-grid { grid-template-columns: 1fr; }
-      .counters { grid-template-columns: repeat(2, 1fr); }
-      .about-stats { grid-template-columns: 1fr 1fr; }
+    @media(max-width:768px){
+      nav{flex-direction: column;}
+      .hero h1{font-size:2rem;}
     }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
 <header>
   <nav>
-    <div class="logo">VN.</div>
-    <div class="nav-links">
+    <div class="logo"><strong>Vedant Narkhede</strong></div>
+    <div>
       <a href="#home">Home</a>
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
@@ -611,273 +216,180 @@
   </nav>
 </header>
 
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-glow"></div>
-  <div class="hero-inner">
-    <div class="hero-badge">Available for opportunities</div>
-    <h1>Hi, I'm <span>Vedant<br>Narkhede</span></h1>
-    <p class="hero-sub"><span id="typing"></span></p>
-    <div class="hero-btns">
-      <a href="mailto:narkhedevedant212@gmail.com" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Hire Me</a>
-      <a href="Resume_VedantNarkhede.pdf" class="btn btn-outline"><i class="fas fa-download"></i> Resume</a>
-      <a href="https://github.com/VedantNarkhede5" class="btn btn-outline"><i class="fab fa-github"></i> GitHub</a>
-      <a href="https://www.linkedin.com/in/narkhedevedant212" class="btn btn-outline"><i class="fab fa-linkedin"></i> LinkedIn</a>
-    </div>
+<section class="hero" id="home" data-aos="fade-up">
+  <h1>Hi, I'm <span style="color:var(--yellow)">Vedant Narkhede</span></h1>
+  <h2><span id="typing"></span></h2>
+  <p>
+    <a href="https://www.linkedin.com/in/narkhedevedant212" class="btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    <a href="https://github.com/VedantNarkhede5" class="btn"><i class="fab fa-github"></i> GitHub</a>
+  </p>
+</section>
+
+<section class="about" id="about" data-aos="fade-up">
+  <h2 class="section-title">About Me</h2>
+  <p>
+    I’m an enthusiastic <strong>MCA student</strong> specializing in <strong>Artificial Intelligence and Machine Learning</strong> at DY Patil International University.  
+    With a strong foundation in <strong>computer science, data analysis, and application development</strong>, I aim to bridge software engineering and intelligent systems to create impactful, efficient solutions.  
+  </p>
+  <p>
+    I enjoy solving real-world problems through technology—whether developing Android apps, performing data-driven analysis, or designing intelligent algorithms.  
+    I value teamwork, continuous learning, and have a keen eye for clean, maintainable code.  
+  </p>
+
+  <h3>Tools & Technologies</h3>
+  <div class="tools">
+    <div class="tool"><i class="fab fa-python"></i><br>Python</div>
+    <div class="tool"><i class="fab fa-java"></i><br>Java</div>
+    <div class="tool"><i class="fas fa-code"></i><br>C / C++</div>
+    <div class="tool"><i class="fas fa-database"></i><br>SQL</div>
+    <div class="tool"><i class="fas fa-mobile"></i><br>Android</div>
+    <div class="tool"><i class="fas fa-brain"></i><br>Data Science</div>
+    <div class="tool"><i class="fab fa-php"></i><br>PHP</div>
+    <div class="tool"><i class="fas fa-chart-line"></i><br>Power BI</div>
   </div>
-  <div class="scroll-indicator">
-    <i class="fas fa-chevron-down"></i>
-    <span>scroll</span>
+
+  <p style="text-align:center;margin-top:2rem;">
+    <a href="Resume_VedantNarkhede.pdf" class="btn"><i class="fas fa-download"></i> Download Resume</a>
+  </p>
+</section>
+
+<section id="skills" data-aos="fade-up">
+  <h2 class="section-title">Skills</h2>
+  <div class="tools">
+    <div class="tool">Python</div>
+    <div class="tool">Java / Advanced Java</div>
+    <div class="tool">C & C++</div>
+    <div class="tool">PHP</div>
+    <div class="tool">Android Studio</div>
+    <div class="tool">Power BI</div>
+    <div class="tool">Data Science</div>
+    <div class="tool">SQL</div>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="fade-up">
-    <div class="section-label">Who I Am</div>
-    <h2 class="section-title">About <em>Me</em></h2>
-  </div>
-  <div class="about-grid fade-up">
-    <div class="about-text">
-      <p>
-        I'm an enthusiastic <strong>MCA student</strong> specializing in <strong>Artificial Intelligence and Machine Learning</strong> at DY Patil International University.
-      </p>
-      <p>
-        With a strong foundation in <strong>computer science, data analysis, and application development</strong>, I aim to bridge software engineering and intelligent systems to create impactful, efficient solutions.
-      </p>
-      <p>
-        I enjoy solving real-world problems through technology — whether developing Android apps, performing data-driven analysis, or designing intelligent algorithms. I value teamwork, continuous learning, and have a keen eye for clean, maintainable code.
-      </p>
-      <a href="Resume_VedantNarkhede.pdf" class="btn btn-primary" style="margin-top:.5rem;"><i class="fas fa-download"></i> Download Resume</a>
+  <section id="education">
+    <div class="section-title">
+      <h2 data-aos="fade-up">Education</h2>
+      <p data-aos="fade-up" data-aos-delay="80">Academic background & timelines.</p>
     </div>
-    <div class="about-stats">
-      <div class="stat-box">
-        <div class="stat-num">30+</div>
-        <div class="stat-label">LeetCode Problems</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">5</div>
-        <div class="stat-label">Projects Built</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">10+</div>
-        <div class="stat-label">Technologies</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">9.2</div>
-        <div class="stat-label">CGPA (BBA)</div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- SKILLS -->
-<section id="skills">
-  <div class="fade-up">
-    <div class="section-label">What I Know</div>
-    <h2 class="section-title">Skills &amp; <em>Technologies</em></h2>
-  </div>
-  <div class="skills-grid fade-up">
-    <div class="skill-chip"><i class="fab fa-python"></i>Python</div>
-    <div class="skill-chip"><i class="fab fa-java"></i>Java</div>
-    <div class="skill-chip"><i class="fas fa-code"></i>C / C++</div>
-    <div class="skill-chip"><i class="fas fa-database"></i>SQL</div>
-    <div class="skill-chip"><i class="fab fa-php"></i>PHP</div>
-    <div class="skill-chip"><i class="fas fa-mobile-alt"></i>Android</div>
-    <div class="skill-chip"><i class="fas fa-brain"></i>Data Science</div>
-    <div class="skill-chip"><i class="fas fa-chart-bar"></i>Power BI</div>
-    <div class="skill-chip"><i class="fas fa-robot"></i>Machine Learning</div>
-    <div class="skill-chip"><i class="fab fa-html5"></i>HTML / CSS</div>
-  </div>
-</section>
+    <div class="edu-list" data-aos="fade-up" data-aos-delay="140">
+      <div class="edu-item">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div>
+            <h3>MCA — Artificial Intelligence & Machine Learning</h3>
+            <div class="edu-meta">DY Patil International University · Pursuing (2025 – 2027)</div>
+          </div>
+        </div>
+      </div>
 
-<!-- EDUCATION -->
-<section id="education">
-  <div class="fade-up">
-    <div class="section-label">My Journey</div>
-    <h2 class="section-title">Education &amp; <em>Background</em></h2>
+      <div class="edu-item">
+        <h3>BBA (Computer Application)</h3>
+        <div class="edu-meta">Indira Group of Institutes · Completed 2025 · CGPA: 9.20</div>
+      </div>
+
+      <div class="edu-item">
+        <h3>Higher Secondary (HSC)</h3>
+        <div class="edu-meta">Pratibha Junior College, Pune · Completed 2022 · Percentage: 78%</div>
+      </div>
+	  <div class="edu-item">
+        <h3>Secondary School Certificate (SSC)</h3>
+        <div class="edu-meta">Priyadarshini english medium school, Pune · Completed 2022 · Percentage: 78%</div>
+      </div>
+    </div>
+  </section>
+
+<section id="projects" data-aos="fade-up">
+  <h2 class="section-title">Projects</h2>
+
+  <div class="project-card">
+    <h3>CSV Data Cleaning & Visualization Dashboard</h3>
+    <p>An interactive dashboard built using Python & Streamlit that allows users to upload CSV files, clean data, and generate insightful visualizations.</p>
+    <p><strong>Tools:</strong> Python, Pandas, Matplotlib, Streamlit</p>
+    <a href="https://github.com/VedantNarkhede5/CSV-Cleaner-Visualizer" class="btn">View on GitHub</a>
   </div>
-  <div class="edu-timeline fade-up">
-    <div class="edu-item">
-      <h3>MCA — Artificial Intelligence &amp; Machine Learning</h3>
-      <div class="edu-meta">DY Patil International University</div>
-      <div class="edu-badge">Pursuing · 2025 – 2027</div>
-    </div>
-    <div class="edu-item">
-      <h3>BBA (Computer Application)</h3>
-      <div class="edu-meta">Indira Group of Institutes</div>
-      <div class="edu-badge">Completed 2025 · CGPA: 9.20</div>
-    </div>
-    <div class="edu-item">
-      <h3>Higher Secondary (HSC)</h3>
-      <div class="edu-meta">Pratibha Junior College, Pune</div>
-      <div class="edu-badge">Completed 2022 · 78%</div>
-    </div>
-    <div class="edu-item">
-      <h3>Secondary School Certificate (SSC)</h3>
-      <div class="edu-meta">Priyadarshini English Medium School, Pune</div>
-      <div class="edu-badge">Completed 2020 · 78%</div>
-    </div>
+
+
+
+	<div class="project-card">
+  <h3>Skin Care AI</h3>
+  <p>
+    Skin Care AI is an intelligent web-based application designed to analyze skin conditions such as acne, dryness, oiliness, and pigmentation using machine learning techniques. The system processes user input and images to identify skin issues and provides personalized skincare recommendations, including suitable products and routines. The application aims to improve skincare decision-making by offering data-driven insights, reducing dependency on trial-and-error methods, and enhancing user confidence in choosing the right skincare solutions.
+  </p>
+  <p><strong>Tools:</strong> Python, Machine Learning, Flask, MongoDB, HTML, CSS</p>
+  <a href="https://github.com/VedantNarkhede5/skin_care_ai" class="btn">View on GitHub</a>
+</div>
+
+
+  <div class="project-card">
+    <h3>Donation Management System</h3>
+    <p>A Java-based desktop application to manage donors, donations, and reports efficiently with SQL database connectivity.</p>
+    <p><strong>Tools:</strong> Java, JDBC, MySQL</p>
+    <a href="https://github.com/VedantNarkhede5/Donation-Management-System" class="btn">View on GitHub</a>
+  </div>
+
+  <div class="project-card">
+    <h3>Flipkart Sales Analysis Dashboard</h3>
+    <p>Power BI dashboard for visualizing and analyzing Flipkart’s sales trends, customer demographics, and regional performance.</p>
+    <p><strong>Tools:</strong> Power BI, Excel</p>
+    <a href="https://github.com/VedantNarkhede5/Flipkart-Sales-Analysis" class="btn">View on GitHub</a>
+  </div>
+
+  <div class="project-card">
+    <h3>AI-Enhanced Driver Wellness Monitoring System</h3>
+    <p>AI + IoT system that monitors driver drowsiness, stress, and wellness levels in real-time to improve road safety.</p>
+    <p><strong>Tools:</strong> Python, OpenCV, TensorFlow, IoT Sensors</p>
+    <a href="https://github.com/VedantNarkhede5/AI-Driver-Wellness" class="btn">View on GitHub</a>
+  </div>
+
+  <div class="counter">
+    <div><div class="num">30+</div>LeetCode Questions</div>
+    <div><div class="num">4</div>Projects</div>
+    <div><div class="num">10+</div>Technologies</div>
+    <div><div class="num">∞</div>Learning Everyday</div>
   </div>
 </section>
 
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="fade-up">
-    <div class="section-label">What I've Built</div>
-    <h2 class="section-title">Featured <em>Projects</em></h2>
-  </div>
-  <div class="projects-grid fade-up">
-
-    <div class="project-card">
-      <div class="project-icon"><i class="fas fa-chart-line"></i></div>
-      <h3>CSV Data Cleaning &amp; Visualization Dashboard</h3>
-      <p>An interactive dashboard that allows users to upload CSV files, clean data, and generate insightful visualizations with automatic profiling.</p>
-      <div class="tags">
-        <span class="tag">Python</span>
-        <span class="tag">Pandas</span>
-        <span class="tag">Matplotlib</span>
-        <span class="tag">Streamlit</span>
-      </div>
-      <a href="https://github.com/VedantNarkhede5/CSV-Cleaner-Visualizer" class="project-link" target="_blank">View on GitHub <i class="fas fa-arrow-right"></i></a>
-    </div>
-
-    <div class="project-card">
-      <div class="project-icon"><i class="fas fa-spa"></i></div>
-      <h3>Skin Care AI</h3>
-      <p>Intelligent web application that analyzes skin conditions like acne, dryness, and pigmentation using ML — providing personalized skincare recommendations and routines.</p>
-      <div class="tags">
-        <span class="tag">Python</span>
-        <span class="tag">Machine Learning</span>
-        <span class="tag">Flask</span>
-        <span class="tag">MongoDB</span>
-      </div>
-      <a href="https://github.com/VedantNarkhede5/skin_care_ai" class="project-link" target="_blank">View on GitHub <i class="fas fa-arrow-right"></i></a>
-    </div>
-
-    <div class="project-card">
-      <div class="project-icon"><i class="fas fa-hand-holding-heart"></i></div>
-      <h3>Donation Management System</h3>
-      <p>Java-based desktop application to manage donors, donations, and generate reports efficiently with SQL database connectivity via JDBC.</p>
-      <div class="tags">
-        <span class="tag">Java</span>
-        <span class="tag">JDBC</span>
-        <span class="tag">MySQL</span>
-      </div>
-      <a href="https://github.com/VedantNarkhede5/Donation-Management-System" class="project-link" target="_blank">View on GitHub <i class="fas fa-arrow-right"></i></a>
-    </div>
-
-    <div class="project-card">
-      <div class="project-icon"><i class="fas fa-shopping-cart"></i></div>
-      <h3>Flipkart Sales Analysis Dashboard</h3>
-      <p>Power BI dashboard for visualizing Flipkart's sales trends, customer demographics, and regional performance metrics with drill-down views.</p>
-      <div class="tags">
-        <span class="tag">Power BI</span>
-        <span class="tag">Excel</span>
-        <span class="tag">Data Analysis</span>
-      </div>
-      <a href="https://github.com/VedantNarkhede5/Flipkart-Sales-Analysis" class="project-link" target="_blank">View on GitHub <i class="fas fa-arrow-right"></i></a>
-    </div>
-
-    <div class="project-card">
-      <div class="project-icon"><i class="fas fa-car"></i></div>
-      <h3>AI-Enhanced Driver Wellness Monitoring System</h3>
-      <p>AI + IoT system that monitors driver drowsiness, stress, and wellness levels in real-time using computer vision and sensors to improve road safety.</p>
-      <div class="tags">
-        <span class="tag">Python</span>
-        <span class="tag">OpenCV</span>
-        <span class="tag">TensorFlow</span>
-        <span class="tag">IoT</span>
-      </div>
-      <a href="https://github.com/VedantNarkhede5/AI-Driver-Wellness" class="project-link" target="_blank">View on GitHub <i class="fas fa-arrow-right"></i></a>
-    </div>
-
-  </div>
-
-  <div class="counters fade-up" style="margin-top:2.5rem;">
-    <div class="counter-item">
-      <div class="counter-num">30+</div>
-      <div class="counter-label">LeetCode Questions</div>
-    </div>
-    <div class="counter-item">
-      <div class="counter-num">5</div>
-      <div class="counter-label">Projects Built</div>
-    </div>
-    <div class="counter-item">
-      <div class="counter-num">10+</div>
-      <div class="counter-label">Technologies</div>
-    </div>
-    <div class="counter-item">
-      <div class="counter-num">∞</div>
-      <div class="counter-label">Learning Everyday</div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="fade-up">
-    <div class="section-label">Let's Connect</div>
-    <h2 class="section-title">Get In <em>Touch</em></h2>
-  </div>
-  <div class="contact-grid fade-up">
-    <div class="contact-info">
-      <div class="contact-row">
-        <i class="fas fa-map-marker-alt"></i>
-        <span>Pune, Maharashtra, India</span>
-      </div>
-      <a href="tel:+917507059249" class="contact-row">
-        <i class="fas fa-phone"></i>
-        <span>+91 7507059249</span>
-      </a>
-      <a href="mailto:narkhedevedant212@gmail.com" class="contact-row">
-        <i class="fas fa-envelope"></i>
-        <span>narkhedevedant212@gmail.com</span>
-      </a>
-      <a href="https://www.linkedin.com/in/narkhedevedant212" target="_blank" class="contact-row">
-        <i class="fab fa-linkedin"></i>
-        <span>linkedin.com/in/narkhedevedant212</span>
-      </a>
-      <a href="https://github.com/VedantNarkhede5" target="_blank" class="contact-row">
-        <i class="fab fa-github"></i>
-        <span>github.com/VedantNarkhede5</span>
-      </a>
-    </div>
-    <div class="contact-cta">
-      <h3>Open to opportunities</h3>
-      <p>Whether it's a project, internship, or full-time role — I'd love to hear from you. Let's build something great together.</p>
-      <a href="mailto:narkhedevedant212@gmail.com" class="btn btn-primary" style="align-self:center;">
-        <i class="fas fa-paper-plane"></i> Send Message
-      </a>
-    </div>
+<section id="contact" data-aos="fade-up">
+  <h2 class="section-title">Contact Me</h2>
+  <div class="contact-card">
+    <p><i class="fas fa-map-marker-alt"></i> Pune, Maharashtra</p>
+    <p><i class="fas fa-phone"></i> <a href="tel:+917507059249">+91 7507059249</a></p>
+    <p><i class="fas fa-envelope"></i> <a href="mailto:narkhedevedant212@gmail.com">narkhedevedant212@gmail.com</a></p>
+    <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/narkhedevedant212">linkedin.com/in/narkhedevedant212</a></p>
+    <p><i class="fab fa-github"></i> <a href="https://github.com/VedantNarkhede5">github.com/VedantNarkhede5</a></p>
+    <p style="text-align:center;margin-top:1rem;">
+      <a href="mailto:narkhedevedant212@gmail.com" class="btn">Hire Me</a>
+    </p>
   </div>
 </section>
 
 <footer>
-  &copy; <script>document.write(new Date().getFullYear())</script> <span>Vedant Narkhede</span> · Built with precision &amp; purpose
+  &copy; <script>document.write(new Date().getFullYear())</script> Vedant Narkhede | Built with ❤️ & Yellow Energy
 </footer>
 
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
-  // Typing animation
-  const phrases = ["MCA Student", "AI & ML Enthusiast", "Python Developer", "Data Science Explorer"];
-  const el = document.getElementById("typing");
-  let pi = 0, ci = 0, deleting = false;
+AOS.init({duration:1000, once:true});
 
-  function tick() {
-    const phrase = phrases[pi];
-    el.textContent = deleting ? phrase.slice(0, ci--) : phrase.slice(0, ci++);
-    if (!deleting && ci > phrase.length) { deleting = true; setTimeout(tick, 1400); return; }
-    if (deleting && ci < 0) { deleting = false; pi = (pi + 1) % phrases.length; ci = 0; setTimeout(tick, 400); return; }
-    setTimeout(tick, deleting ? 50 : 90);
+// Typing animation
+const textArray = ["MCA Student", "Developer", "Data Science Enthusiast"];
+let typingElement = document.getElementById("typing");
+let i = 0, j = 0;
+function type(){
+  if(j < textArray[i].length){
+    typingElement.textContent += textArray[i][j];
+    j++; setTimeout(type, 100);
+  } else {
+    setTimeout(() => {
+      typingElement.textContent = "";
+      i = (i + 1) % textArray.length;
+      j = 0;
+      type();
+    }, 1500);
   }
-  tick();
-
-  // Scroll animations
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+}
+type();
 </script>
 
 </body>
